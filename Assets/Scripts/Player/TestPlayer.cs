@@ -26,7 +26,6 @@ namespace VoidInc
             if (Input.GetButton("Fire1"))
             {
                 testPlayerAnimator.SetTrigger("Attacking");
-                t
             }
 
             if (Input.GetAxis("Horizontal") < 0)
