@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 namespace VoidInc
 {
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class TestPlayer : MonoBehaviour
     {
         private Animator testPlayerAnimator;
@@ -28,6 +32,19 @@ namespace VoidInc
                 testPlayerAnimator.SetTrigger("Attacking");
             }
 
+            if (Input.GetAxis("Vertical") < 0)
+            {
+                testPlayerFacing = 0;
+                testPlayerAnimator.SetTrigger("Moving");
+                testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
+            }
+            else if (Input.GetAxis("Vertical") > 0)
+            {
+                testPlayerFacing = 2;
+                testPlayerAnimator.SetTrigger("Moving");
+                testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
+            }
+
             if (Input.GetAxis("Horizontal") < 0)
             {
                 testPlayerFacing = 3;
@@ -41,18 +58,6 @@ namespace VoidInc
                 testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
             }
 
-            if (Input.GetAxis("Vertical") < 0)
-            {
-                testPlayerFacing = 0;
-                testPlayerAnimator.SetTrigger("Moving");
-                testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-            }
-            else if (Input.GetAxis("Vertical") > 0)
-            {
-                testPlayerFacing = 2;
-                testPlayerAnimator.SetTrigger("Moving");
-                testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-            }
             debugText.text = "Vertical = " + Input.GetAxis("Vertical") + " | Horizontal = " + Input.GetAxis("Horizontal");
 
             if (!Input.GetButton("Fire1") && Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
