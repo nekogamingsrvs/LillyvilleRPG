@@ -39,7 +39,7 @@ namespace VoidInc
                 testPlayerFacing = 0;
                 testPlayerAnimator.SetTrigger("Moving");
                 testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-                if(!Physics2D.Linecast(new Vector2(transform.position.x - 7, transform.position.y - 8), new Vector2(transform.position.x + 7, transform.position.y - 8), collisionLayer))
+                if(!Physics2D.Linecast(new Vector2(transform.position.x - 7, transform.position.y - 9), new Vector2(transform.position.x + 7, transform.position.y - 9), collisionLayer))
                 {
                     gameObject.transform.position += new Vector3(0, Input.GetAxis("Vertical") * Speed * Time.deltaTime, 0);
                 }
@@ -49,7 +49,7 @@ namespace VoidInc
                 testPlayerFacing = 2;
                 testPlayerAnimator.SetTrigger("Moving");
                 testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-                if(!Physics2D.Linecast(new Vector2(transform.position.x - 7, transform.position.y + 8), new Vector2(transform.position.x + 7, transform.position.y + 8), collisionLayer))
+                if(!Physics2D.Linecast(new Vector2(transform.position.x - 7, transform.position.y + 9), new Vector2(transform.position.x + 7, transform.position.y + 9), collisionLayer))
                 {
                     gameObject.transform.position += new Vector3(0, Input.GetAxis("Vertical") * Speed * Time.deltaTime, 0);
                 }
@@ -60,7 +60,7 @@ namespace VoidInc
                 testPlayerFacing = 3;
                 testPlayerAnimator.SetTrigger("Moving");
                 testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-                if(!Physics2D.Linecast(new Vector2(transform.position.x - 8, transform.position.y - 7), new Vector2(transform.position.x - 8, transform.position.y + 7), collisionLayer))
+                if(!Physics2D.Linecast(new Vector2(transform.position.x - 9, transform.position.y - 7), new Vector2(transform.position.x - 9, transform.position.y + 7), collisionLayer))
                 {
                     gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal") * Speed * Time.deltaTime, 0, 0);
                 }
@@ -70,7 +70,7 @@ namespace VoidInc
                 testPlayerFacing = 1;
                 testPlayerAnimator.SetTrigger("Moving");
                 testPlayerAnimator.SetInteger("Facing", testPlayerFacing);
-                if(!Physics2D.Linecast(new Vector2(transform.position.x + 8, transform.position.y - 7), new Vector2(transform.position.x + 8, transform.position.y + 7), collisionLayer))
+                if(!Physics2D.Linecast(new Vector2(transform.position.x + 9, transform.position.y - 7), new Vector2(transform.position.x + 9, transform.position.y + 7), collisionLayer))
                 {
                     gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal") * Speed * Time.deltaTime, 0, 0);
                 }
