@@ -76,7 +76,7 @@ namespace VoidInc
                 }
             }
 
-            debugText.text = "Vertical = " + Input.GetAxis("Vertical") + " | Horizontal = " + Input.GetAxis("Horizontal");
+            debugText.text = "Vertical = " + Input.GetAxis("Vertical") + " | Horizontal = " + Input.GetAxis("Horizontal") + " i to open Inventory";
 
             if (!Input.GetButton("Fire1") && Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             {
