@@ -11,7 +11,7 @@ public class Item
 
 public class Inventory : MonoBehaviour
 {
-    public int width = 5, height = 10, boxWidth = 40, boxHeight = 40, borderX = 5, borderY = 5;
+    public int width = 10, height = 5, boxWidth = 40, boxHeight = 40, borderX = 5, borderY = 5;
     
     public List<Item> items;
     
@@ -57,11 +57,11 @@ public class Inventory : MonoBehaviour
     
     void OnGUI()
     {
-        if(openInventory == true)
+        for (int x = 0; x < width; x++)
         {
-            for (int x = 0; x < width; x++)
+            for (int y = 0; y < height; y++)
             {
-                for (int y = 0; y < height; y++)
+                if(openInventory == true || x < width && y == 0)
                 {
                     if(GUI.Button(new Rect(x * (boxWidth + borderX), y * (boxHeight + borderY), boxWidth, boxHeight), ""))
                     {
@@ -84,9 +84,9 @@ public class Inventory : MonoBehaviour
                         }
                     }
                     
-                    if(x + 1 == width && y == 0)
+                    if(x + 1 == width && y + 1 == height)
                     {
-                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), y * (boxHeight + borderY), (boxWidth * 2), boxHeight), "Add Item " + (selectedItemFromList + 1)))
+                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), 0 * (boxHeight + borderY), (boxWidth * 2), boxHeight), "Add Item " + (selectedItemFromList + 1)))
                         {
                             for (int x2 = 0; x2 < width; x2++)
                             {
@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
                             blockAdd = false;
                         }
                         
-                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), (y + 1) * (boxHeight + borderY), boxWidth, boxHeight), "<<<"))
+                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), (0 + 1) * (boxHeight + borderY), boxWidth, boxHeight), "<<<"))
                         {
                             if(selectedItemFromList > 0)
                             {
@@ -112,7 +112,7 @@ public class Inventory : MonoBehaviour
                             }
                         }
                         
-                        if(GUI.Button(new Rect(((x + 2) * (boxWidth + borderX)) - borderX, (y + 1) * (boxHeight + borderY), boxWidth, boxHeight), ">>>"))
+                        if(GUI.Button(new Rect(((x + 2) * (boxWidth + borderX)) - borderX, (0 + 1) * (boxHeight + borderY), boxWidth, boxHeight), ">>>"))
                         {
                             if(selectedItemFromList + 1 < items.Count)
                             {
