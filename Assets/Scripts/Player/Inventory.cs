@@ -15,7 +15,11 @@ public class Inventory : MonoBehaviour
     
     public List<Item> items;
     
+    public Texture2D selectedItemTexture;
+    
     public int selectedItemFromList = 0;
+    
+    int selectedSlot = 0;
     
     Item[,] slotItems;
     
@@ -57,6 +61,13 @@ public class Inventory : MonoBehaviour
     
     void OnGUI()
     {
+        if(GUI.Button(new Rect(Screen.width - 100, 0, 100, 100), ""))
+        {
+            
+        }
+        
+        GUI.DrawTexture(new Rect(Screen.width - 90, 10, 80, 80), slotItems[selectedItemX, selectedItemY].texture);
+        
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -81,6 +92,11 @@ public class Inventory : MonoBehaviour
                             selectedItem = slotItems[x, y];
                             selectedItemX = x;
                             selectedItemY = y;
+                        }
+                        
+                        if(y == 0)
+                        {
+                            selectedSlot = x;
                         }
                     }
                     
@@ -124,6 +140,11 @@ public class Inventory : MonoBehaviour
                     if(slotItems[x, y].name != "null")
                     {
                         GUI.DrawTexture(new Rect(x * (boxWidth + borderX), y * (boxHeight + borderY), boxWidth, boxHeight), slotItems[x, y].texture);
+                    }
+                    
+                    if(selectedSlot == x && y == 0)
+                    {
+                        GUI.DrawTexture(new Rect(x * (boxWidth + borderX), y * (boxHeight + borderY), boxWidth, boxHeight), selectedItemTexture);
                     }
                 }
             }
