@@ -137,6 +137,43 @@ public class Inventory : MonoBehaviour
                         }
                     }
                     
+                    if(x + 1 == width && y == 0)
+                    {
+                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), y * (boxHeight + borderY), (boxWidth * 2), boxHeight), "Add Item " + (selectedItemFromList + 1)))
+                        {
+                            for (int x2 = 0; x2 < width; x2++)
+                            {
+                                for (int y2 = 0; y2 < height; y2++)
+                                {
+                                    if(slotItems[x2, y2].name == "null" && blockAdd == false)
+                                    {
+                                        blockAdd = true;
+                                        slotItems[x2, y2] = items[selectedItemFromList];
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            blockAdd = false;
+                        }
+                        
+                        if(GUI.Button(new Rect((x + 1) * (boxWidth + borderX), (y + 1) * (boxHeight + borderY), boxWidth, boxHeight), "<<<"))
+                        {
+                            if(selectedItemFromList > 0)
+                            {
+                                selectedItemFromList -= 1;
+                            }
+                        }
+                        
+                        if(GUI.Button(new Rect(((x + 2) * (boxWidth + borderX)) - borderX, (y + 1) * (boxHeight + borderY), boxWidth, boxHeight), ">>>"))
+                        {
+                            if(selectedItemFromList + 1 < items.Count)
+                            {
+                                selectedItemFromList += 1;
+                            }
+                        }
+                    }
+                    
                     if(slotItems[x, y].name != "null")
                     {
                         GUI.DrawTexture(new Rect(x * (boxWidth + borderX), y * (boxHeight + borderY), boxWidth, boxHeight), slotItems[x, y].texture);
