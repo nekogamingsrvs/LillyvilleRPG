@@ -13,8 +13,6 @@ namespace VoidInc
         private Animator testPlayerAnimator;
 
         private int testPlayerFacing;
-
-        public Text debugText;
         
         public LayerMask collisionLayer;
 
@@ -24,6 +22,8 @@ namespace VoidInc
         void Start()
         {
             testPlayerAnimator = GetComponent<Animator>();
+
+            transform.position = GameObject.Find("Spawn").gameObject.transform.position + new Vector3(8, -8);
         }
 
         // Update is called once per frame
@@ -75,9 +75,7 @@ namespace VoidInc
                     gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal") * Speed * Time.deltaTime, 0, 0);
                 }
             }
-
-            debugText.text = "Vertical = " + Input.GetAxis("Vertical") + " | Horizontal = " + Input.GetAxis("Horizontal") + " i to open Inventory";
-
+            
             if (!Input.GetButton("Fire1") && Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             {
                 testPlayerAnimator.SetTrigger("Idle");
